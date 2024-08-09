@@ -1,5 +1,6 @@
 package com.nicson.workshopmongo.services;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -23,5 +24,9 @@ public class PostService {
         } catch (NoSuchElementException e) {
             throw new ObjectNotFoundException("O post não foi encontrado!");
         }
+    }
+
+    public List<Post> findByTitle(String text) {
+        return repository.findByTitleContainingIgnoreCase(text);
     }
 }
